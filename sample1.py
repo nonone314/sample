@@ -1,19 +1,21 @@
 import streamlit as st
 import pandas as pd
 
-df = pd.read_excel('test.xlsx')
-
-
+# タイトルを表示
 st.title("引継ぎくん")
 
-option = st.selectbox(
-    '料金所を選択してください',
-    ['富山', '金沢', '福井','敦賀'],
-    index = None,
-    placeholder="料金所を選択してください")
+# ファイルアップロードのウィジェット
+uploaded_file = st.file_uploader("Excelファイルを選択してください", type=["xlsx", "xls"])
 
-with open("sample.txt","r", encoding="utf=8") as f:
-	lines=f.read().splitlines()
+if uploaded_file is not None:
+    # アップロードされたファイルを読み込む
+    df = pd.read_excel(uploaded_file)
+
+option = st.selectbox(
+	'料金所を選択してください',
+	['富山', '金沢', '福井','敦賀'],
+	index = None,
+	placeholder="料金所を選択してください")
 
 keyword = option
 
