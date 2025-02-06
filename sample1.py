@@ -9,7 +9,7 @@ uploaded_file = st.file_uploader("Excelファイルを選択してください",
 
 if uploaded_file is not None:
     # アップロードされたファイルを読み込む
-    df = pd.read_excel(uploaded_file)
+   df = pd.read_excel('uploaded_file',engine="openpyxl")
 
 option = st.selectbox(
 	'料金所を選択してください',
