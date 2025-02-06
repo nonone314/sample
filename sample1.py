@@ -1,21 +1,22 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
+import scipy as sp
+import matplotlib.pyplot as plt
 
-# タイトルを表示
+df = pd.read_excel('test.xlsx')
+
+
 st.title("引継ぎくん")
-
-# ファイルアップロードのウィジェット
-uploaded_file = st.file_uploader("Excelファイルを選択してください", type=["xlsx", "xls"])
-
-if uploaded_file is not None:
-    # アップロードされたファイルを読み込む
-   df = pd.read_excel('uploaded_file',engine="openpyxl")
+with open("sample.txt","r", encoding="utf=8") as f:
+	lines=f.read().splitlines()
 
 option = st.selectbox(
-	'料金所を選択してください',
-	['富山', '金沢', '福井','敦賀'],
-	index = None,
-	placeholder="料金所を選択してください")
+    	'料金所を選択してください',
+    	['富山', '金沢', '福井','敦賀'],
+    	index = None,
+    	placeholder="料金所を選択してください")
+
 
 keyword = option
 
